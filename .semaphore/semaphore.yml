@@ -5,17 +5,6 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Artifacts re-use
-    task:
-      jobs:
-        - name: Project artifact job
-          commands:
-            - checkout
-            - artifact pull project project_artifact.txt
-        - name: Workflow artifact job
-          commands:
-            - checkout
-            - artifact pull workflow workflow_artifact.txt
   - name: Artifacts generation
     task:
       jobs:
@@ -37,3 +26,19 @@ blocks:
             - sleep 3
             - artifact pull job job_artifact.txt
             - cat job_artifact.txt
+            - artifact delete job job_artifact.txt
+  - name: Artifacts re-use
+    task:
+      jobs:
+        - name: Project artifact job
+          commands:
+            - checkout
+            - artifact pull project project_artifact.txt
+            - cat project_artifact.txt
+            - artifact yank project project_artifact.txt
+        - name: Workflow artifact job
+          commands:
+            - checkout
+            - artifact pull workflow workflow_artifact.txt
+            - cat workflow_artifact.txt
+            - artifact delete workflow workflow_artifact.txt
