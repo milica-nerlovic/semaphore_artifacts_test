@@ -23,7 +23,7 @@ blocks:
             - checkout
             - echo "This is an example job artifact file" > job_artifact.txt
             - artifact push job job_artifact.txt
-            - sleep 3
+            - sleep 20
             - artifact pull job job_artifact.txt
             - cat job_artifact.txt
             - artifact delete job job_artifact.txt
