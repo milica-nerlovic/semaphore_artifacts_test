@@ -24,7 +24,7 @@ blocks:
             - echo "This is an example job artifact file" > job_artifact.txt
             - artifact push job job_artifact.txt
             - sleep 20
-            - artifact pull job job_artifact.txt
+            - artifact pull job job_artifact.txt --force
             - cat job_artifact.txt
             - artifact delete job job_artifact.txt
   - name: Artifacts re-use
