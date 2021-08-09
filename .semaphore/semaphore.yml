@@ -22,4 +22,4 @@ blocks:
           commands:
             - checkout
             - echo "This is an example job artifact file" > job_artifact.txt
-            - artifact push project job_artifact.txt
+            - artifact push job job_artifact.txt
