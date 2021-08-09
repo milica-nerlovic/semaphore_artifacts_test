@@ -13,3 +13,13 @@ blocks:
             - checkout
             - echo "This is an example project artifact file" > project_artifact.txt
             - artifact push project project_artifact.txt
+        - name: Workflow artifact job
+          commands:
+            - checkout
+            - echo "This is an example workflow artifact file" > workflow_artifact.txt
+            - artifact push workflow workflow_artifact.txt
+        - name: Job artifact job
+          commands:
+            - checkout
+            - echo "This is an example job artifact file" > job_artifact.txt
+            - artifact push project job_artifact.txt
