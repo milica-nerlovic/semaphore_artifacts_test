@@ -12,7 +12,9 @@ blocks:
           commands:
             - checkout
             - echo "This is an example project artifact file" > project_artifact.txt
-            - artifact push project project_artifact.txt
+            - artifact push project project_artifact.txt --expire-in 1d
+            - echo "This is an example project artifact file as well" > project_artifact_as_well.txt
+            - artifact push project project_artifact_as_well.txt --expire-in 1h
         - name: Workflow artifact job
           commands:
             - checkout
@@ -33,10 +35,9 @@ blocks:
         - name: Project artifact job
           commands:
             - checkout
-            - artifact pull project project_artifact.txt --verbose
+            - artifact pull project project_artifact.txt
             - cat project_artifact.txt
             - artifact yank project project_artifact.txt
-            - artifact pull project non_existing_file.txt --verbose
         - name: Workflow artifact job
           commands:
             - checkout
