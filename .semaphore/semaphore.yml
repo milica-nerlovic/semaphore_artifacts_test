@@ -33,9 +33,10 @@ blocks:
         - name: Project artifact job
           commands:
             - checkout
-            - artifact pull project project_artifact.txt
+            - artifact pull project project_artifact.txt --verbose
             - cat project_artifact.txt
             - artifact yank project project_artifact.txt
+            - artifact pull project non_existing_file.txt --verbose
         - name: Workflow artifact job
           commands:
             - checkout
